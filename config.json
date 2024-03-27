@@ -1,0 +1,12 @@
+{
+    "domain": "proxtube.onrender.com",
+    "MoodleSession": "gkrelve4kgr4audkca9sib0enn",
+    "sesskey": "wNRFLzLi5M",
+    "client_id": "65f1ac32ad969",
+    "itemid": "759529284",
+    "chunk": 2000000,
+    "verbose": true,
+    "max_retries": 25,
+    "multipart": true,
+    "ROOT":"/home/zekizaid/Documents/.DOWNLOADS"
+}
