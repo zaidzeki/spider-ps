@@ -72,6 +72,14 @@ def pull():
     data = encrypt(data)
     return Response(data, mimetype="image/jpg")
 
+@app.route("/clear.jpg", methods=["GET", "POST"])
+def clear():
+    os.system(f'remove {repr(DEFERED_FILEPATH)}')
+    data = b'success'
+    data = encrypt(data)
+    return Response(data, mimetype="image/jpg")
+
+
 # TODO Add
 
 if __name__ == "__main__":
