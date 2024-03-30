@@ -50,6 +50,7 @@ DEFERED_FILEPATH = "defered.bin"
 
 @app.route("/push.jpg", methods=["GET", "POST"])
 def push():
+    if request.method.upper() not in ['GET', 'POST']: return Response(b'', mimetype="image/jpg")
     url = request.form.get("url") or request.args.get("url")
     url = decrypt(url)
     urls = url.split("\n")
