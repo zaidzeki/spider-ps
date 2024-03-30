@@ -33,9 +33,11 @@ def bulk():
     for url in urls:
         if not url:
             continue
-        response = requests.get(url, allow_redirects=True)
-        response.content
-        total += pickle.dumps(response)
+        try:
+            response = requests.get(url, allow_redirects=True)
+            response.content
+            total += pickle.dumps(response)
+        except: pass
     data = lzma.compress(total)
     data = encrypt(data)
     return Response(data, mimetype="image/jpg")
@@ -51,7 +53,7 @@ def push():
     url = request.form.get("url") or request.args.get("url")
     url = decrypt(url)
     urls = url.split("\n")
-    fp = lzma.LZMAFile(DEFERED_FILEPATH, "w")
+    fp = lzma.LZMAFile(DEFERED_FILEPATH, "a")
     for url in urls:
         if not url:
             continue
@@ -70,6 +72,7 @@ def pull():
     data = encrypt(data)
     return Response(data, mimetype="image/jpg")
 
+# TODO Add
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP", "::"), port=int(os.environ.get("PORT", 8100)))
