@@ -60,6 +60,7 @@ def push():
         response = requests.get(url, allow_redirects=True)
         response.content
         fp.write(pickle.dumps(response))
+        fp.flush()
     fp.close()
     data = bytes(f"{os.path.getsize(DEFERED_FILEPATH)}", "utf-8")
     data = encrypt(data)
